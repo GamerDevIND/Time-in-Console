@@ -75,7 +75,8 @@ async def run():
 
     stats = (
         f"{COLOR_LABEL}CPU:{COLOR_RESET} {COLOR_VALUE}{cpu_percent:.2f}%{COLOR_RESET}, \n"
-        f"{COLOR_LABEL}Memory:{COLOR_RESET} {COLOR_VALUE}{memory.percent:.2f}% ({memory.available / (1024**3):.2f}{COLOR_RESET} / {COLOR_VALUE}{memory.total / (1024**3):.2f}){COLOR_RESET} GB, \n"
+        f"{COLOR_LABEL}Memory:{COLOR_RESET} {COLOR_VALUE}{memory.percent:.2f}% ({memory.used / (1024**3):.2f}{COLOR_RESET} / {COLOR_VALUE}{memory.total / (1024**3):.2f}){COLOR_RESET} GB, \n"
+        f"{COLOR_LABEL}Memory Free:{COLOR_RESET} {COLOR_VALUE}{memory.available / (1024**3):.2f}{COLOR_RESET} / {COLOR_VALUE}{memory.total / (1024**3):.2f}{COLOR_RESET}GB, \n"
         f"{COLOR_LABEL}Disk ({current_disk}):{COLOR_RESET}{COLOR_VALUE} {disk.percent:.2f}%{COLOR_RESET}, \n"
         f"{COLOR_LABEL}Disk Used ({current_disk}):{COLOR_RESET} {COLOR_VALUE}{disk.used / (1024**3):.2f}{COLOR_RESET} / {COLOR_VALUE}{disk.total / (1024**3):.2f}{COLOR_RESET} GB, \n"
         f"{COLOR_LABEL}Free Space ({current_disk}):{COLOR_RESET} {COLOR_VALUE}{disk.free / (1024**3):.2f}{COLOR_RESET} / {COLOR_VALUE}{disk.total / (1024**3):.2f}{COLOR_RESET} GB"
