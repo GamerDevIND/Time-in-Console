@@ -95,6 +95,10 @@ async def main():
         print(f"\n{colorama.Fore.YELLOW}Exiting dashboard...")
     finally:
         colorama.deinit()
+        try:
+            sys.exit(1)
+        except SystemExit:
+            os._exit(1)
 
 if __name__ == "__main__":
     asyncio.run(main())
