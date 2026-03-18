@@ -1,7 +1,6 @@
 import datetime
 import colorama
 import psutil
-import asyncio
 import sys
 import time
 import os
@@ -33,7 +32,7 @@ def get_progress_string(percent, length=30):
            colorama.Fore.WHITE + "-" * (length - filled_length))
     return f"|{bar}|"
 
-async def run(last_net_io, last_time):
+def run(last_net_io, last_time):
     sys.stdout.write('\033[H\033[?25l')
 
     now = datetime.datetime.now()
@@ -89,7 +88,7 @@ async def run(last_net_io, last_time):
     sys.stdout.flush()
     return net_io, current_time
 
-async def main():
+def main():
     sys.stdout.write('\033[2J\033[H') 
     psutil.cpu_percent(interval=None)
     last_net_io = psutil.net_io_counters()
@@ -97,8 +96,8 @@ async def main():
     
     try:
         while True:
-            last_net_io, t = await run(last_net_io, t)
-            await asyncio.sleep(0.2)
+            last_net_io, t = run(last_net_io, t)
+            time.sleep(0.2)
     except KeyboardInterrupt:
         sys.stdout.write('\033[?25h')
         print(f"\n{colorama.Fore.YELLOW}Exiting dashboard...")
@@ -106,4 +105,4 @@ async def main():
         colorama.deinit()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
