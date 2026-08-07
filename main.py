@@ -64,7 +64,7 @@ def run(last_net_io, last_time):
     print(f"{get_progress_string(day_percent)}{CLEAR_LINE}\n{CLEAR_LINE}")
 
     print(f"{COLOR_LABEL}Time: {COLOR_VALUE}{std_hour:02d}:{now.minute:02d}:{now.second:02d} {meridiem}{COLOR_RESET}{CLEAR_LINE}")
-    print(f"{COLOR_LABEL}Date: {COLOR_VALUE}{now.strftime('%d / %m / %Y (%A)')}{COLOR_RESET}{CLEAR_LINE}")
+    print(f"{COLOR_LABEL}Date: {COLOR_VALUE}{now.strftime('%d / %m (%B / %b) / %Y (%A)')}{COLOR_RESET}{CLEAR_LINE}")
     print(f"{'=' * 37}{CLEAR_LINE}\n{CLEAR_LINE}")
 
     cpu_percent = psutil.cpu_percent(interval=None)
